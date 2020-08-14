@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const crypto = require('crypto')
 const db = require('../models')
+const io = require('../app')
 
 // Models
 const {Team, User, Country} = db.sequelize.models
@@ -66,7 +67,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const {username, age, password, team: TeamId} = req.body
+        const {name, username, age, password, team} = req.body
 
         // Generate random string (salt)
         const buffer = await crypto.randomBytes(16)
@@ -77,19 +78,26 @@ router.post('/register', async (req, res) => {
         const encryptedPassword = passKey.toString('base64')
 
         await User.create({
+            name,
+            TeamId: team,
             username,
             age,
             salt,
             password: encryptedPassword,
-            TeamId
+        })
+        io.sockets.emit('AlertaUsuario', {
+            variant: 'success',
+            msg: 'Un usuario se ha registrado!'
         })
 
-        return res.status(201).send({ok: true, msg: 'Registrado exitosamente'})
+        res.status(201).send({ok: true, msg: 'Registrado exitosamente'})
 
     } catch (error) {
-        if (!error.ok) {
-            const {message: msg} = error.errors[0]
-            return res.status(403).send({ok: false, err: {msg}})
+        if (error) {
+            if (!error.ok) {
+                const {message: msg} = error.errors[0]
+                return res.status(403).send({ok: false, err: {msg}})
+            }
         }
         res.status(500)
     }
