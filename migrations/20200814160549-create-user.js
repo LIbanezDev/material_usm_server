@@ -8,33 +8,38 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            TeamId: {
-                type: Sequelize.INTEGER,
-                references: {
-                    model: 'Teams',
-                    key: 'id'
-                }
-            },
             name: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: false
             },
             username: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                unique: true,
+                unique: true
             },
             age: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
-            },
-            salt: {
-                type: Sequelize.STRING,
                 allowNull: false
             },
             password: {
                 type: Sequelize.STRING,
                 allowNull: false
+            },
+            salt: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            image: {
+                type: Sequelize.STRING,
+                defaultValue: null
+            },
+            careerId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'Careers',
+                    key: 'id',
+                    as: 'careerId'
+                }
             },
             createdAt: {
                 allowNull: false,
