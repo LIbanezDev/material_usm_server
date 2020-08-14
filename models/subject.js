@@ -1,8 +1,7 @@
 'use strict';
 
-
 module.exports = (sequelize, DataTypes) => {
-    const Career = sequelize.define('Career', {
+    const Subject = sequelize.define('Subject', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -12,24 +11,23 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         },
-        type: {
-            type: DataTypes.STRING,
+        semester: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 notEmpty: {
                     msg: 'Nombre no puede estar vacio'
                 }
             }
-        }
+        },
     }, {})
-
-    Career.associate = function (models) {
-        Career.hasMany(models.User, {
+    Subject.associate = function (models) {
+        Subject.belongsTo(models.Career, {
             foreignKey: 'careerId'
         })
-        Career.hasMany(models.Subject, {
-            foreignKey: 'careerId'
+        Subject.hasMany(models.File, {
+            foreignKey: 'subjectId'
         })
-    };
-    return Career;
+    }
+    return Subject;
 };

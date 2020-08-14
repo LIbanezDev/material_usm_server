@@ -27,13 +27,13 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: {
                 max: {
-                    args: [120],
+                    args: [122],
                     msg: 'Nadie ha vivido mas de 122 años'
-                },                  // only allow values <= 23
+                },
                 min: {
-                    args: [18],
-                    msg: 'Debes ser mayor de 18 años'
-                },                  // only allow values >= 23
+                    args: [16],
+                    msg: 'Debes ser mayor de 16 años'
+                },
                 isNumeric: {
                     msg: 'La edad debe ser un numero'
                 }
@@ -43,17 +43,22 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false
         }
     }, {});
     User.associate = function (models) {
-        User.belongsTo(models.Team)
+        User.belongsTo(models.Career, {
+            foreignKey: 'careerId'
+        })
     };
     return User;
 }
-
 
 
 

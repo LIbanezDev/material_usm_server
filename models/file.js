@@ -1,8 +1,9 @@
 'use strict';
-
-
+const {
+    Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    const Career = sequelize.define('Career', {
+    const File = sequelize.define('File', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -12,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         },
-        type: {
+        path: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -20,16 +21,18 @@ module.exports = (sequelize, DataTypes) => {
                     msg: 'Nombre no puede estar vacio'
                 }
             }
+        },
+        extension: {
+            type: DataTypes.VIRTUAL, // This field doesn't exists on the db
+            get() {
+                return this.path.split('.').pop();
+            },
         }
     }, {})
-
-    Career.associate = function (models) {
-        Career.hasMany(models.User, {
-            foreignKey: 'careerId'
+    File.associate = function (models) {
+        File.belongsTo(models.Subject, {
+            foreignKey: 'subjectId'
         })
-        Career.hasMany(models.Subject, {
-            foreignKey: 'careerId'
-        })
-    };
-    return Career;
+    }
+    return File;
 };
