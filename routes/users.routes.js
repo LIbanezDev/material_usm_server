@@ -2,11 +2,12 @@ const express = require('express')
 const router = express.Router()
 const crypto = require('crypto')
 const db = require('../models')
-const io = require('../app')
-const uploadFile = require('../helpers/uploadFileToGC')
+const {io} = require('../app')
+const filesMiddle = require('../middlewares/images')
 
 // Models
 const {User} = db.sequelize.models
+
 
 router.post('/login', async (req, res) => {
     try {
@@ -26,6 +27,7 @@ router.post('/login', async (req, res) => {
         if (encryptedPassword !== userDB.password) {
             return res.send({ok: false, err: {msg: 'Usuario o pass incorrectas'}})
         }
+
         return res.send({ok: true, msg: 'Login exitoso'})
 
     } catch (error) {
@@ -33,7 +35,11 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register',
+    filesMiddle.multerMid.array('archivo_exe', 1),
+    filesMiddle.uploadFiles('users'),
+    async (req, res) => {
+
         try {
             const {name, username, age, password, career: careerId} = req.body
 
@@ -45,16 +51,7 @@ router.post('/register', async (req, res) => {
                 crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha1')
                     .toString('base64')
 
-
-            let image
-            if (req.file && Object.keys(req.file).length > 0) {
-                // Upload file to google cloud users folder
-                const archivo_exe = req.file
-                image = await uploadFile(archivo_exe, 'users')
-            } else {
-                // Set default avatar as image url
-                image = 'https://storage.googleapis.com/usm-archivos/users/default-avatar.png'
-            }
+            const [userImageURL] = req.publicURLS
 
             await User.create({
                 name,
@@ -62,7 +59,7 @@ router.post('/register', async (req, res) => {
                 age,
                 password: encryptedPassword,
                 salt,
-                image,
+                image: userImageURL,
                 careerId,
             })
 
@@ -80,7 +77,7 @@ router.post('/register', async (req, res) => {
                     const {message: msg} = error.errors[0]
                     return res.status(403).send({ok: false, err: {msg}})
                 }
-                return res.status(403).send({ok: false, err:error})
+                return res.status(403).send({ok: false, err: error})
             }
             res.status(500)
         }

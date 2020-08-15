@@ -1,4 +1,4 @@
-const io = require('../app')
+const {io} = require('../app')
 /*try {
     const {Proximity, Board, Led} = require("johnny-five");
     const board = new Board();
