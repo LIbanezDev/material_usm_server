@@ -2,7 +2,7 @@
   "name": "material_usm_back",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "reset": "firmata-party uno --debug",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,9 +22,11 @@
     "request-promise": "^4.2.6",
     "sequelize": "^6.3.4",
     "socket.io": "^2.3.0",
+    "supertest": "^4.0.2",
     "xlsx": "^0.16.5"
   },
   "devDependencies": {
+    "jest": "^26.4.0",
     "sequelize-cli": "^6.2.0"
   }
 }

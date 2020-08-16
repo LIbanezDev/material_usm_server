@@ -4,7 +4,7 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     const File = sequelize.define('File', {
-        name: {
+        url: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -13,19 +13,16 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         },
-        path: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: {
-                    msg: 'Nombre no puede estar vacio'
-                }
+        name: {
+            type: DataTypes.VIRTUAL,
+            get() {
+                return this.url.split('/').pop();
             }
         },
         extension: {
             type: DataTypes.VIRTUAL, // This field doesn't exists on the db
             get() {
-                return this.path.split('.').pop();
+                return this.url.split('.').pop();
             },
         }
     }, {})

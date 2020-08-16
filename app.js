@@ -3,23 +3,36 @@ const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
 // Disable express detection from lamers
 app.disable('x-powered-by')
 
-// Export io before importing routes that use it.
-module.exports = {
-    io,
-    app
-}
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
+// parse application/json
+app.use(bodyParser.json())
 
-app.use(require('./routes'))
+app.use(cors())
+
+const userRoutes = require('./routes/users.routes')
+const fileRoutes = require('./routes/files.routes')
+
+app.use('/api/file', fileRoutes)
+app.use('/api/user', userRoutes)
+
+// Export app for testing
+module.exports = {
+    app,
+    http,
+    io
+}
 
 require('./sockets/sockets')
 
-const port = 4000
-http.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
-})
+
+
 
 
 

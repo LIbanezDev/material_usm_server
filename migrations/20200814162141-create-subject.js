@@ -9,10 +9,12 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             name: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false
             },
-            type: {
-                type: Sequelize.INTEGER
+            semester: {
+                type: Sequelize.INTEGER,
+                allowNull: false
             },
             careerId: {
                 type: Sequelize.INTEGER,
@@ -22,14 +24,6 @@ module.exports = {
                     as: 'careerId'
                 }
             },
-            createdAt: {
-                allowNull: false,
-                type: Sequelize.DATE
-            },
-            updatedAt: {
-                allowNull: false,
-                type: Sequelize.DATE
-            }
         });
     },
     down: async (queryInterface, Sequelize) => {
