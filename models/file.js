@@ -1,7 +1,6 @@
 'use strict';
-const {
-    Model
-} = require('sequelize');
+const { format, render, cancel, register } = require('timeago.js');
+
 module.exports = (sequelize, DataTypes) => {
     const File = sequelize.define('File', {
         url: {
@@ -14,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         name: {
-            type: DataTypes.VIRTUAL,
+            type: DataTypes.VIRTUAL, // This field doesn't exists on the db
             get() {
                 return this.url.split('/').pop();
             }
@@ -24,7 +23,13 @@ module.exports = (sequelize, DataTypes) => {
             get() {
                 return this.url.split('.').pop();
             },
-        }
+        },
+        createdAtFormated: {
+            type: DataTypes.VIRTUAL,
+            get() {
+                return format(this.createdAt)
+            }
+        },
     }, {})
     File.associate = function (models) {
         File.belongsTo(models.Subject, {

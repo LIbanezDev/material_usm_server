@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {})
     Subject.associate = function (models) {
         Subject.belongsTo(models.Career, {
-            foreignKey: 'careerId'
+            foreignKey: 'careerId',
         })
         Subject.hasMany(models.File, {
             foreignKey: 'subjectId'

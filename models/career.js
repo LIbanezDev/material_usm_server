@@ -1,6 +1,5 @@
 'use strict';
 
-
 module.exports = (sequelize, DataTypes) => {
     const Career = sequelize.define('Career', {
         name: {
@@ -29,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
         })
         Career.hasMany(models.Subject, {
             foreignKey: 'careerId'
+        })
+        Career.belongsToMany(models.Campus, {
+            through: models.CampusCareer
         })
     };
     return Career;
