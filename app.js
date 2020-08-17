@@ -16,11 +16,19 @@ app.use(bodyParser.json())
 
 app.use(cors())
 
-const userRoutes = require('./routes/users.routes')
-const fileRoutes = require('./routes/files.routes')
+const userRoutes = require('./routes/user.routes')
+const fileRoutes = require('./routes/file.routes')
+const careerRoutes = require('./routes/career.routes')
+const subjectRoutes = require('./routes/subject.routes')
+const {graphQlHTTP} = require('./graphql/graphql')
+
+// Testing graphql
+app.use('/graphql', graphQlHTTP)
 
 app.use('/api/file', fileRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/career', careerRoutes)
+app.use('/api/subject', subjectRoutes)
 
 // Export app for testing
 module.exports = {
