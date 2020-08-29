@@ -1,6 +1,6 @@
 const {http} = require('./app')
 
-const port = 4000
+const port = process.env.PORT || 4000
 http.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
+    console.log(`Listening at port ${port}`)
 })
