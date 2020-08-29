@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         }
-    }, {})
+    }, {
+        timestamps: false
+    })
 
     Career.associate = function (models) {
         Career.hasMany(models.User, {

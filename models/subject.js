@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         },
-    }, {})
+    }, {
+        timestamps: false
+    })
     Subject.associate = function (models) {
         Subject.belongsTo(models.Career, {
             foreignKey: 'careerId',
