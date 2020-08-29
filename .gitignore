@@ -1,5 +1,7 @@
 node_modules/
-config/
+
 .idea/
-materialusm-69673261fe2a.json
+
 .gcloudignore
+
+.vercel

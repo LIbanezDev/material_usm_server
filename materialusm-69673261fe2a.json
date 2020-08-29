@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "materialusm",
+  "private_key_id": "69673261fe2a2f51525ace073033c67d76fee735",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDQkLZhW0CpqKmd\nyjMVOoa/IcpgMYV7dGIIWTbLYfAbMmSN0Xg+/HdcFRkjCV73cBinMVjMYsM56ZSA\nxiN+o18EGIkZjH411andUXmB0iVffEeu7TrmUT9dvmfVnaeK4V5FytcagNDCHTwY\nQ6Vtlv9Ds0/EUuO+3ID/as5BnGHRmWfuV5uCQzcp5xQ5BkN1a+Iu0N4U8TCGrlhP\ne4Dv2qs8TGXlJ0Pufi+xbYV8iIMeKOUW+Dfm5oKoL+Qk1Smop53w1/kKZqUxuukW\nWbAs+/QfkCv2Lbkwl9ch+8HGaN3evkvstSorlXu57W4E6meiY4W4jEx3U1JsVLKp\nqIc5lGyRAgMBAAECggEAD+IlcY6ggwssN68Ratl1L5MkNWUwFDHN0XLx4FVKEtgo\nnkBIlwtlD6cvreJl0BRCXGE+sPoIgh2OyKvOQjOw5b/0mPSBHBp0gD1XMpLNc9Mk\nJmc8qBOh7sK0Z6lE/CejpU8ISKVswIu3auWj8I+iSwaZ2Yqye3ORg2If6RE+xdZ0\nqyRTf39CmSsNV/visHiyJ3OPjCUhFMhn0LGriD8UVjrfMkmhk6WEcU423KGEGvSa\nlKt/1RDBKBS62w2TTYRJ4spE0H9T/KC8kBh+pi3cSaBD35XaD2s8RvV79l4IiydE\n7KvXa2Dxa5S1jny33PMtgxCki7lSbsutlQdrsFG2kQKBgQD6oovVo+vWfFz8j8fM\nPWmkJD2mR3EE7aRcIrlCGoyjVBaEA18M+f47WvEEmSFf6tk0tJ/uP1oh0lOr4HoV\ntU38BoOtev8L5twwV2fX/OgKdM2FXV1uqTL/vbpnG7TAMG/LHjrBsTJne1l8Psth\nizfrId8ILT2a/TYucZLnayiGvQKBgQDVB6D2WU0qY33BihkJ/8XJs+fZskfxO02O\nw2EjMOGr7I9DVEaA2mMfozy9D+e9qzJFX9PTPinv2MorC3NSKdfx4ESet48r8IHS\nTE2ru+0CXW85TPdk4RbKQDWCei5mw0t5EIDdxbeEPXFdyRUA+nHMoy8orOFxDhGF\nKElKQ5qUZQKBgAF0B9OJS8jGl9NvEf2BLaeh/imEqIcayaUvHlvfw4j+59KEInz0\nxiCZ+mPIb4Ua23+OvI6pF2Cy04Ffn9WYY4dekkzjNa9f+07ccuGxuba1zqtDS1Nk\n78LD2tzWMEoc/cjzt+t/l4c6E97AjnVWVVCrtZtah8zqQvIp/mwRFv8RAoGBAKnS\nDwrTXaRw84sZn6RM9Us505XDfX5cnBM2xXTcPspjJkGyKRIHBgXuhzjgOQkGNGkB\nX0eCwsOkumVeF2xkVvVGpu0vvz5z18nhcfl5MhM0kLnJFV6h4R0R2pZM+DiLbtrv\nwQsJ1qXgpULyTYAeJiHP5IQ0bPNHF8hiuSougkfRAoGBAJqttBGzbx1tHq7AMHeA\nHjy3KVKHcdFqkvHza1L0ZgpOxdmcXB/xLQ+CG4ETDUFFwZ/zZQRMlyoDuxVqBPp7\nCgOjN/sCY4ZWa613Wh973QWMx2nMJuTYYJkrmeV1sBAjLFCKTzJUZymsTYXC860b\n8dQE6F5p7XqmfU1sWA72ROLr\n-----END PRIVATE KEY-----\n",
+  "client_email": "material-usm-lucas@materialusm.iam.gserviceaccount.com",
+  "client_id": "109269201820233554736",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/material-usm-lucas%40materialusm.iam.gserviceaccount.com"
+}

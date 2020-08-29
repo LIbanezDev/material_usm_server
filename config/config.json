@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "fromiti",
+    "password": "123456",
+    "database": "material_usm",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "timezone": "-04:00",
+    "logging": false
+  },
+  "test": {
+    "username": "fromiti",
+    "password": "123456",
+    "database": "material_usm",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "timezone": "-04:00",
+    "logging": false
+  },
+  "production": {
+    "username": "fromitiusm",
+    "password": "nokia303..",
+    "database": "material_usm",
+    "host": "34.121.166.182",
+    "dialect": "mysql",
+    "timezone": "-04:00",
+    "logging": false
+  }
+}
