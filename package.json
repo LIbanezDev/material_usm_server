@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server",
+    "build": "node server",
     "reset": "firmata-party uno --debug",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
