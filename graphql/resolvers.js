@@ -1,3 +1,5 @@
+const {getAllFiles} = require("./helpers");
+
 const crypto = require('crypto')
 
 // DB
@@ -65,27 +67,9 @@ module.exports = {
         })
     },
 
-    files: async ({ID, subjectId, limit, offset, careerId, semester, careerType}) => {
-        return await File.findAll({
-            where: {
-                ...ID && {id: ID},
-                ...subjectId && {subjectId}
-            },
-            include: {
-                model: Subject,
-                where: {
-                    ...semester && {semester}
-                },
-                include: {
-                    model: Career,
-                    where: {
-                        ...careerId && {id: careerId},
-                        ...careerType && {type: careerType}
-                    }
-                },
-            },
-            ...offset && {offset},
-            ...limit && {limit}
-        })
+    files: async (args) =>  getAllFiles(args),
+    filesAmount: async (args) => {
+        const files = await getAllFiles(args)
+        return files.length
     }
 };

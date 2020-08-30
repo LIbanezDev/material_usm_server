@@ -50,8 +50,9 @@ module.exports = buildSchema(`
     subjects(ID: Int, careerId: Int, semester: Int): [Subject]
     careers(ID: Int, type: String): [Career]
     files(ID: Int, subjectId: Int, limit: Int, offset: Int, careerId: Int, semester: Int, careerType: String): [File]
+    filesAmount(subjectId: Int, careerId: Int, semester:Int, careerType: String): Int
   }
- 
+   
   type Mutation {
     registerUser(name: String!, username: String!, age: Int!, password: String!, careerId: Int): Register
   }

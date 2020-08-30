@@ -16,6 +16,10 @@ if (config.use_env_variable) {
     sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// Check connection
+sequelize.authenticate()
+    .then(() => console.log('Conexion exitosa a la base de datos'))
+    .catch(err => console.log(`Error al conectar a la base de datos - error = ${err}`))
 
 // Get models
 fs.readdirSync(__dirname)
